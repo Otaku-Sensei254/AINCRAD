@@ -1,0 +1,17 @@
+node_modules
+.next
+dist
+.env*
+*.md
+.cursor
+.kilocode
+.windsurf
+.claude
+agents
+*.mdc
+.idea
+.vscode
+.DS_Store
+coverage
+.turbo
+.vercel

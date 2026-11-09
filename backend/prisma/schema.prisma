@@ -1,0 +1,109 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum AppType {
+  WEB
+  API
+  GATEWAY
+  MICROSERVICE
+  WORKER
+  DATABASE
+  QUEUE
+  OTHER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  role        Role         @default(USER)
+  tier        String       @default("FREE")
+  memberships Membership[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Organization {
+  id          String   @id @default(cuid())
+  name        String
+  memberships Membership[]
+  projects    Project[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Membership {
+  id             String       @id @default(cuid())
+  userId         String
+  organizationId String
+  role           String       @default("member")
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+  @@unique([userId, organizationId])
+}
+
+model Project {
+  id             String       @id @default(cuid())
+  name           String
+  organizationId String
+  organization   Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  applications   Application[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Application {
+  id          String   @id @default(cuid())
+  name        String
+  type        AppType  @default(WEB)
+  url          String?
+  healthPath   String?       @default("/health")
+  paused       Boolean       @default(false)
+  command     String?
+  logPath     String?
+  apiKey      String?  @unique @default(cuid())
+  projectId   String
+  project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  environments Environment[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Environment {
+  id            String      @id @default(cuid())
+  name          String
+  applicationId String
+  application   Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  createdAt     DateTime    @default(now())
+}
+
+model Plan {
+  id        String   @id @default(cuid())
+  name      String
+  tier      String   @unique
+  amount    Int
+  currency  String   @default("KES")
+  interval  String   @default("monthly")
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Broadcast {
+  id        String   @id @default(cuid())
+  subject   String
+  body      String
+  createdAt DateTime @default(now())
+}

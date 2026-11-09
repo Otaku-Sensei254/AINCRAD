@@ -1,0 +1,68 @@
+[
+  {
+    "id": "a804e213-8108-4297-8560-73f8e2588ff8",
+    "name": "Chateau254",
+    "type": "api",
+    "url": "https://chateau254-direct-production.up.railway.app/api",
+    "healthPath": "/health",
+    "command": "",
+    "logPath": "",
+    "tags": [],
+    "createdAt": "2026-10-30T11:40:23.466Z"
+  },
+  {
+    "id": "191d6bde-68f7-47aa-8bac-59ca4eb76ce8",
+    "name": "Jabali Web App",
+    "type": "web",
+    "url": "https://jabali-reboot-v2.vercel.app/",
+    "healthPath": "/health",
+    "command": "",
+    "logPath": "",
+    "tags": [],
+    "createdAt": "2026-10-30T11:43:27.402Z"
+  },
+  {
+    "id": "df074ce9-b292-4a66-88e0-eb3f55a1fb50",
+    "name": "PhishNet Exchange Backend",
+    "type": "api",
+    "url": "https://phishnet-exchangemk2.onrender.com",
+    "healthPath": "/health",
+    "command": "",
+    "logPath": "",
+    "tags": [],
+    "createdAt": "2026-10-30T12:07:13.255Z"
+  },
+  {
+    "id": "4c855413-8f0c-4aa3-835a-9606546c4f15",
+    "name": "Champagniacs",
+    "type": "web",
+    "url": "https://champagniacs.vercel.app/",
+    "healthPath": "/health",
+    "command": "",
+    "logPath": "",
+    "tags": [],
+    "createdAt": "2026-10-30T12:48:47.376Z"
+  },
+  {
+    "id": "766c4fc4-63c4-4078-a43c-f6e480e1c467",
+    "name": "VibeFlow Backend",
+    "type": "api",
+    "url": "https://vibeflow.gigalixirapp.com",
+    "healthPath": "/health",
+    "command": "",
+    "logPath": "",
+    "tags": [],
+    "createdAt": "2026-11-01T06:51:40.472Z"
+  },
+  {
+    "id": "a6b20a16-ff11-48ff-9c3c-4a994e4cbd95",
+    "name": "VibeFlow",
+    "type": "api",
+    "url": "vibeflow.gigalixirapp.com",
+    "healthPath": "/health",
+    "command": "",
+    "logPath": "",
+    "tags": [],
+    "createdAt": "2026-11-06T16:34:14.749Z"
+  }
+]
